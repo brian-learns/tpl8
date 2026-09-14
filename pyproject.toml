@@ -78,4 +78,5 @@ files = [
     ".python-version",
     "scripts/test-all-versions.sh",
     ".github/workflows/ci.yml",
+    "tests",
 ]
