@@ -53,10 +53,11 @@ command's spec and integration-test fixture. Log: `~/templapyze/docs/bootstrap-l
 
 Deviations and gotchas: `~/templapyze/docs/bootstrap-log.md` (Phase C section).
 
-- [x] Vendor the snapshot: pinned tpl8 `v0.1.0` →
-      `src/templapyze/templates/tpl8-v0.1.0.tar` + `.sha256` sidecar
+- [x] Vendor the snapshot: pinned tpl8 tag →
+      `src/templapyze/templates/tpl8-v<version>.tar` + `.sha256` sidecar
       (**tar archive, not a tree** — the static tools must not scan vendored
-      code); the wheel ships both (verified).
+      code); the wheel ships both (verified). Re-vendored as `v0.2.0` after
+      the Makefile uv<0.12 security-scan fix.
 - [x] Replace the greeter with the real CLI: typer surface
       (`dir`, `--plan`, `--force`, `--no-commit`, `--from`, `--name`,
       `--description`, `--author`, `--python`), pydantic models

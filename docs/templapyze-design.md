@@ -136,7 +136,8 @@ the tpl8 template — the template's first offspring is its own tool.
    `scripts/`, `.github/`) lives *outside* the package, so the dist
    **vendors the template as package data** — an exact, hash-pinned snapshot
    of a tpl8 release. Implemented as a **deterministic tar archive**
-   (`templapyze/templates/tpl8-v0.1.0.tar` + `.sha256` sidecar), not a tree:
+   (`templapyze/templates/tpl8-v<version>.tar` + `.sha256` sidecar), not a
+   tree:
    the vendored template is *data*, and its Python sources must never be
    scanned by the static tools (a vendored tree breaks refurb/mypy's src
    layout resolution and would need per-tool excludes). Consequences:
