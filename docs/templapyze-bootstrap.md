@@ -13,34 +13,35 @@ the design this checklist operationalizes.
 - [x] Tag the snapshot source: `v0.1.0` (matches `version = "0.1.0"`).
 - [x] Commit both.
 
-## Phase B — manual templapyze run into `~/templapyze`
+## Phase B — manual templapyze run into `~/templapyze` (done)
 
-Do this in a fresh session. **Write down every step and decision as you go** —
-that log becomes the command's spec and integration-test fixture.
+**Write down every step and decision as you go** — that log becomes the
+command's spec and integration-test fixture. Log: `~/templapyze/docs/bootstrap-log.md`.
 
-- [ ] `mkdir ~/templapyze`; copy the template tree from tagged `v0.1.0`
+- [x] `mkdir ~/templapyze`; copy the template tree from tagged `v0.1.0`
       (manifest `files` + `src/tpl8/`), excluding `.git`, `.venv*`, caches
       (`__pycache__`, `.ruff_cache`, `.pytest_cache`, `.mypy_cache`, `.uv`),
       `dist/`, `uv.lock`, and `docs/` (design docs are tpl8-specific).
-- [ ] Path renames: `src/tpl8` → `src/templapyze`;
+- [x] Path renames: `src/tpl8` → `src/templapyze`;
       `src/templapyze/.agents/skills/tpl8` → `src/templapyze/.agents/skills/templapyze`.
-- [ ] Token rename `tpl8` → `templapyze` (word-boundary) in: `pyproject.toml`,
+- [x] Token rename `tpl8` → `templapyze` (word-boundary) in: `pyproject.toml`,
       `Makefile`, `AGENTS.md`, `SKILL.md`, `ci.yml`, `test-all-versions.sh`,
       `src/templapyze/*.py`.
-- [ ] Personalize: description/author; entry point
+- [x] Personalize: description/author; entry point
       `templapyze = "templapyze.__main__:main"`; **replace** the template's
       `[tool.templapyze]` manifest table with the provenance block
       (`origin = "tpl8"`, `version = "0.1.0"`). Same table name, different
       fields — the generator must *replace*, never copy.
-- [ ] `uv sync` → gate: `make check` + `make test`. The renamed *greeter* must
+- [x] `uv sync` → gate: `make check` + `make test`. The renamed *greeter* must
       work (`uv run templapyze` says hello) — this verifies the rename before
       any real code exists.
-- [ ] `rg -w tpl8` — expect exactly **one** hit: the provenance
-      `origin = "tpl8"`. (The command's rename-correctness test must exclude
-      the provenance line.)
-- [ ] `git init` + first commit:
+- [x] `rg -w tpl8` — expect exactly **two** hits in project files, both
+      intentional provenance lines: pyproject `origin = "tpl8"` and the
+      README stamp. (The command's rename-correctness test must exclude
+      provenance locations.)
+- [x] `git init` + first commit:
       `Bootstrap templapyze: tpl8 v0.1.0 (manual templapyze run)`.
-- [ ] Keep the golden tree: tag it `bootstrap-v0` — it is the diff target for
+- [x] Keep the golden tree: tag it `bootstrap-v0` — it is the diff target for
       Phase D.
 
 ## Phase C — implement the tool in `~/templapyze` (`make test` green throughout)
