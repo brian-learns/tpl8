@@ -40,11 +40,14 @@ select = [
     "S",   # Bandit Automated Security checks
     "I",   # Isort (enforces clean import sorting structures)
     "N",   # PEP8 Naming convention enforcement
-    "RUF"  # Ruff-specific absolute modern rules
+    "RUF", # Ruff-specific absolute modern rules
+    "ANN", # Flake8-annotations (fails on missing type hints)
 ]
 ignore = [
-    "S101", # Allows 'assert' statements for pytest modules
-    "E501"  # Let the formatter handle long agent lines, don't trigger lint errors
+    "S101",   # Allows 'assert' statements for pytest modules
+    "E501",   # Let the formatter handle long agent lines, don't trigger lint errors
+    "ANN002", # Missing type annotation for *args
+    "ANN003", # Missing type annotation for **kwargs
 ]
 
 
