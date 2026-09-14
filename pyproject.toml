@@ -65,3 +65,17 @@ rules = { all = "error" }
 
 [tool.uv]
 exclude-newer = "7 days"
+
+[tool.templapyze]
+# templapyze template manifest: `package` is renamed to the new project's
+# package name; `files` are the non-package files copied into the new project.
+package = "tpl8"
+files = [
+    "Makefile",
+    "AGENTS.md",
+    "README.md",
+    ".gitignore",
+    ".python-version",
+    "scripts/test-all-versions.sh",
+    ".github/workflows/ci.yml",
+]
