@@ -44,24 +44,25 @@ command's spec and integration-test fixture. Log: `~/templapyze/docs/bootstrap-l
 - [x] Keep the golden tree: tag it `bootstrap-v0` — it is the diff target for
       Phase D.
 
-## Phase C — implement the tool in `~/templapyze` (`make test` green throughout)
+## Phase C — implement the tool in `~/templapyze` (`make test` green throughout) (done)
 
-- [ ] Vendor the snapshot: pinned tpl8 `v0.1.0` tree →
-      `src/templapyze/templates/tpl8/` + sha256 pin; verify the wheel ships it
-      (`uv build`, list contents).
-- [ ] Replace the greeter with the real CLI: typer surface
+Deviations and gotchas: `~/templapyze/docs/bootstrap-log.md` (Phase C section).
+
+- [x] Vendor the snapshot: pinned tpl8 `v0.1.0` →
+      `src/templapyze/templates/tpl8-v0.1.0.tar` + `.sha256` sidecar
+      (**tar archive, not a tree** — the static tools must not scan vendored
+      code); the wheel ships both (verified).
+- [x] Replace the greeter with the real CLI: typer surface
       (`dir`, `--plan`, `--force`, `--no-commit`, `--from`, `--name`,
-      `--description`, `--author`, `--python`), pydantic model for the rename
-      plan.
-- [ ] Implement pipeline steps 1–9 from the design doc.
-- [ ] Tests: name normalization, rename-table planning, tmp-dir integration
-      (run command → `rg -w tpl8` minus provenance → generated project's
-      `make test`).
-
-Note: after Phase B, `templapyze`'s SKILL.md/README still describe a *greeter*
-— mechanical rename ≠ content. Rewriting that content for the real tool is
-part of this phase; the project's own AGENTS.md is what guides that work (the
-template's first real use).
+      `--description`, `--author`, `--python`), pydantic models
+      (`Author`, `TemplateSpec`, `RenamePlan`).
+- [x] Implement pipeline steps 1–9 from the design doc (gate = `make test`,
+      which already depends on `check`).
+- [x] Tests: name normalization, rename-table planning, snapshot integrity,
+      safety refusals, and an `integration`-marked end-to-end test (generate
+      → gate → commit → token audit) run via `make test-integration`.
+- [x] Rewrite the greeter content (SKILL.md, README, AGENTS.md) for the
+      real tool.
 
 ## Phase D — recursive verification (the payoff)
 
