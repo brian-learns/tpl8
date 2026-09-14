@@ -64,11 +64,14 @@ Deviations and gotchas: `~/templapyze/docs/bootstrap-log.md` (Phase C section).
 - [x] Rewrite the greeter content (SKILL.md, README, AGENTS.md) for the
       real tool.
 
-## Phase D — recursive verification (the payoff)
+## Phase D — recursive verification (the payoff) (done)
 
-- [ ] Run the finished command: `cd /tmp && <templapyze> demo` → fresh greeter
-      project.
-- [ ] `diff -r` against the golden tree (`bootstrap-v0`) — expected deltas:
-      provenance stamp, description, `uv.lock` only.
-- [ ] `make test` green in the generated project.
+- [x] Run the finished command: `cd /tmp && templapyze templapyze` (same
+      target name as the manual run, so the diff is meaningful) → fresh
+      project, gate green in-pipeline, first commit made.
+- [x] `diff -r` against the golden tree (`bootstrap-v0`) — actual deltas:
+      description (template placeholder, known follow-up), provenance comment
+      wording, manual-only `docs/bootstrap-log.md`, untracked artifacts.
+      **`uv.lock` byte-identical**; everything else byte-identical.
+- [x] `make test` green in the generated project (6 passed).
       (Design acceptance test 1, run for real.)
