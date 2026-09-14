@@ -1,23 +1,16 @@
 ---
 name: tpl8
-description: Conventions for the tpl8 template and projects bootstrapped from it (typer + pydantic CLI, uv, make check/test pipeline). Use when modifying this template or a tpl8-based project.
+description: A greeter CLI (hello world) — greets someone by name. Use when asked to run tpl8, greet someone, or adjust the greeting.
 ---
 
 # tpl8
 
-The repository-root `AGENTS.md` is the full reference — read it first.
+A greeter CLI.
 
-Quick orientation:
+```
+$ uv run tpl8 --name Broman --formal
+Good day from tpl8 to Broman!
+```
 
-- CLI split: typer parses args and owns exit codes; a pydantic model validates
-  and renders; the command is thin glue (`ValidationError` → stderr +
-  `typer.Exit(code=1)`).
-- Entry point is `main()` in `src/<pkg>/__main__.py`; `python -m <pkg>` must
-  keep working alongside the console script.
-- Gate: `make test` (static pipeline + pytest). Changes to dependencies or
-  `requires-python` also need `make test-all-versions`.
-- Keep three things in sync: `requires-python`, the version list in
-  `scripts/test-all-versions.sh`, and the CI matrix in `.github/workflows/ci.yml`.
-- Docstrings are required on public definitions (interrogate `fail-under = 90`).
-- Never run a bare `uv run --python <older-version>`: it recreates the dev
-  `.venv`. Use `UV_PROJECT_ENVIRONMENT=".venv-<ver>"` instead.
+Two invocation paths: `uv run tpl8 ...` and `uv run python -m tpl8 ...`.
+Run `uv run tpl8 --help` to see the options (`--name`, `--formal`).
