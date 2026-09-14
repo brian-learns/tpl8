@@ -1,3 +1,8 @@
+<!--
+SPDX-License-Identifier: 0BSD
+Copyright (c) 2026 tpl8 creators and contributors
+-->
+
 # Design proposal: `templapyze`
 
 **One-liner.** `templapyze <dir>` bootstraps a new Python project in `<dir>`

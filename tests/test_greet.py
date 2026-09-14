@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: 0BSD
+# Copyright (c) 2026 tpl8 creators and contributors
+
 """Tests for the greet CLI command and the Greeting model."""
 
 import pytest

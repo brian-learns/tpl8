@@ -1,3 +1,8 @@
+<!--
+SPDX-License-Identifier: 0BSD
+Copyright (c) 2026 tpl8 creators and contributors
+-->
+
 # Bootstrap checklist: building `templapyze` from the tpl8 template
 
 Handoff doc. The `templapyze` command does not exist yet, so the first

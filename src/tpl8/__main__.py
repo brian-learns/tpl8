@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: 0BSD
+# Copyright (c) 2026 tpl8 creators and contributors
+
 """Minimal typer + pydantic example: typer parses args, pydantic validates and renders."""
 
 import typer
